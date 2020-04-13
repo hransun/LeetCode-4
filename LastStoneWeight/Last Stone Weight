@@ -1,0 +1,51 @@
+class Solution {
+    //T: O(nlogn) S: O(1)
+    public int lastStoneWeight(int[] stones) {
+        if(stones == null || stones.length == 0) {
+            return 0;
+        }
+        if(stones.length == 1) {
+            return 1;
+        }
+        int i = stones.length - 1;
+        int j = stones.length - 2;
+        Arrays.sort(stones);
+        while(stones[j] != 0) {
+            stones[j] = stones[i] - stones[j];
+            stones[i] = 0;
+            Arrays.sort(stones);
+        }
+        //上面的while循环出来的array是sort的
+        // 结果永远在最后一位
+        return stones[i];
+    }
+    //T: O(nlogn) S: O(n)
+    public int lastStoneWeight(int[] stones) {
+        if(stones == null || stones.length == 0) {
+            return 0;
+        }
+        if(stones.length == 1) {
+            return 1;
+        }
+        PriorityQueue<Integer> max = trans(stones);
+        while(max.size() > 1) {
+            int a = max.poll();
+            int b = max.poll();
+            if(a != b) {
+                max.offer(Math.abs((a - b)));
+            }
+        }
+        if(max.size() == 1) {
+            return max.poll();
+        }
+        return 0;
+    }
+    private PriorityQueue<Integer> trans(int[] stones) {
+        PriorityQueue<Integer> max = new PriorityQueue<>(Collections.reverseOrder());
+        for(int i = 0; i < stones.length; i++) {
+            max.add(stones[i]);
+        }
+        return max;
+    }
+
+}
