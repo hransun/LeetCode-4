@@ -38,10 +38,10 @@ class RandomizedSet {
         if(i == list.size()) {
            i = 0;
         }
-         int index = (int)(Math.random()*(list.size()-i));
-         int target = list.get(index+i);
+         int index = i + (int)(Math.random()*(list.size()-i));
+         int target = list.get(index);
          int swapElement = list.get(i);
-         map.put(swapElement, index+i);
+         map.put(swapElement, index);
          map.put(target, i);
          swap(list, index, i);
          i++;
