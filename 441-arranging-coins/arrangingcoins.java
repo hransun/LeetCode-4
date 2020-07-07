@@ -6,6 +6,8 @@ class Solution {
         long cur = 0;
         while(left <= right) {
             long m = left + (right - left) / 2;
+            //等差数量
+            //1+2+3。。。+n = n *(n-1) / 2
             cur = m * (m+1) / 2;
             if(cur == n) {
                 return (int)m;
