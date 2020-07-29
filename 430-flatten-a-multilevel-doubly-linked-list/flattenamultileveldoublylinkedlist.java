@@ -29,6 +29,7 @@ class Solution {
                 cur.next = cur.child;
                 cur.child.prev = cur;
                 cur.child = null;
+                //走到末尾
             }else if(cur.next == null && !stack.isEmpty()) {
                 cur.next = stack.pollFirst();
                 cur.next.prev = cur;
