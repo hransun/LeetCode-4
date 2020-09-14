@@ -1,0 +1,5 @@
+There are N pieces of wood, with their lengths (in meters) stored in Bords[N].
+k painters are assigned to paint all these wood together.
+For each piece of wood, it can only be painted by 1 and only 1 painter, and each painter can only paint contiguous woods.
+Each painter can paint wood at the same speed, say 1 meter per minute.
+How can we find an assignment such that the total time for painting the wood is minimized.

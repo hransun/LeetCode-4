@@ -1,0 +1,30 @@
+// dp[k][n]: the min time to paint the fence with k people who paint n fence
+// for n fence, there are k people to paint the contiguous fence
+// the max time for one person to paint is the min painting time for the team
+
+  fence:  1 , 2, 3,......N
+  person: k-1........... k
+
+// dp[k][n] = Math.min(dp[k][n], max(dp[k-1][n-j], j))
+
+public int painter(int[] n, int k){
+     int[][] dp = new int[k+1][n+1];
+     //base : 1个人
+     for(int i = 0; i < n ; i++){
+        dp[1][i+1] += n[i];
+     }
+     //从2个人开始算
+     for(int i = 2; i <= k; i++) {
+     //i个人，至少i块板子
+        for(int j = i; j <= n; j++)
+        dp[i][j] = Integer.MAX_VALUE;
+        //最后一个人从最后一块开始painting，最多painting n-(k-1)块
+        int costByLastOne = 0;
+        for(int p = 1; p <= j-(i-1); p++){
+        //overall cost by the laster painter
+            costByone += n[n.length-j];
+            dp[i][j]= Math.min(dp[i][j], Math.max(dp[i-1][j-p], costBylastone))
+        }
+     }
+     return dp[k][n];
+}
