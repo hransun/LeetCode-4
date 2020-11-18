@@ -67,9 +67,11 @@ class Solution {
                 return false;
             }
             for(char c: group.toCharArray()) {
-                if(!Character.isDigit(c) && c < 'A' || c > 'F') {
-                    return false;
-                }
+              if(Character.isDigit(ch)){
+                       continue;
+               }else if (!(ch >= 'a' && ch <= 'f') && !(ch >= 'A' && ch <= 'F')) {
+                       return false;
+               }
             }
         }
         return true;
