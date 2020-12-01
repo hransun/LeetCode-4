@@ -1,5 +1,6 @@
 class Solution {
-    public int smallestDivisor(int[] nums, int threshold) {
+    public int smallestDivisor(int[] nums, int threshold)
+    // maximum divisor to consider is max(nums) because the threshold >= num.length
         int max = 1;
         for(int i : nums){
            max= Math.max(max, i);

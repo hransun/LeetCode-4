@@ -3,7 +3,7 @@ class Solution {
         //T: O(n)
         //下一个permuatation
         //XXXY DES -> XXXZ ACS 其中z比y大一号
-        //step1: 找到DES range， i停在Y上
+        //step1: 找到DES range， i停在Y上,这里有重复的元素也可以视为des
         //step2: 在DES中找到the smallest element that bigger than Y，这里是j
         //step3: swap i，j， 此时DES的部分仍旧是des
         //step 4: 把DES变成ASC

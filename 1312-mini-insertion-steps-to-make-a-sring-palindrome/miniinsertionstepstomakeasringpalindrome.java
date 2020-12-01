@@ -1,12 +1,13 @@
 class Solution {
     public int minInsertions(String s) {
+
         if(s == null || s.length() <= 1) {
             return 0;
         }
         return s.length() - dp(s);
     }
     private int dp(String s) {
-
+      //dp[i][j] is the max palindrome letters it has from [i,j]
         int[][] dp = new int[s.length()][s.length()];
         for(int i = s.length() -1; i >= 0; i--) {
             for(int j = i; j < s.length(); j++) {
