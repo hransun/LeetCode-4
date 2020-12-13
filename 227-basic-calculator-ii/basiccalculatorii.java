@@ -28,16 +28,13 @@ class Solution {
                     int sum = prev/digit;
                     stack.offerLast(sum);
                 }
+            }else{
+              op = cur;
             }
-            if(index < s.length()){
-                op = s.charAt(index);
-                index++;
-            }
-
         }
         int res = 0;
-        while(!stack.isEmpty()){
-            res +=stack.pollLast();
+        for(int i: stack){
+            res += i;
         }
         return res;
     }
