@@ -21,7 +21,8 @@ class Solution {
             }else{
                 i++;
             }
-            //each around up the max score
+            //each around update the max score
+            //because you don't need to play all tokens
             max= Math.max(s,max);
         }
         return max;

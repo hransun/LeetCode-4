@@ -6,7 +6,9 @@ class Solution {
         array[0][0] = poured*1.0;
         for(int i = 0; i <= query_row; i++){
             for(int j = 0; j <= i ; j++){
+              //留到下一层的酒的数量
                 double left = (array[i][j]-1.0)/2;
+                //如果有剩下，计算下一层酒的数量
                 if(left > 0){
                   //ie 第一层的酒会流向第二层的0和1position的酒杯
                     array[i+1][j] += left;

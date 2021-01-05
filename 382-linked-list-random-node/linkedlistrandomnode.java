@@ -24,6 +24,7 @@ class Solution {
         int res = -1;
         for(int i = 1; cur != null; i++){
             //if the random index == cur index, update res
+            // (int)(Math.random()*i =》 the range is [0,i-1]
             if((int)(Math.random()*i) == i-1){
                 res = cur.val;
             }

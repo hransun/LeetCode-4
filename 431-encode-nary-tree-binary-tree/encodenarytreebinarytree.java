@@ -7,7 +7,7 @@ class Codec {
     //                      3
     //                      /
     //                     4
-   //left child 接 root的一下层， right child 接 root的当前层的node
+   //left child 接 root.children第一个node， right branch of left child 接 root.children的第二个以后的node
     public TreeNode encode(Node root) {
         if(root == null){
             return root;

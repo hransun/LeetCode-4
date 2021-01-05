@@ -1,11 +1,14 @@
 public String largestTimeFromDigits(int[] A) {
        int[] time = new int[]{-1};
       helper(A,0,time);
+      //after permuation,didn't find any valid time
        if(time[0] == -1) {
            return new String();
        }
+       //get hour
        int hour = time[0]/60;
         String h = hour <=9 ? "0"+hour: ""+hour;
+        //get min
         int min = time[0]%60;
         String m = min<=9? "0"+min: ""+min;
         return h+":"+m;
@@ -17,9 +20,12 @@ public String largestTimeFromDigits(int[] A) {
    }
 
    private void helper(int[] A, int index, int[] time){
+     //recursion： permutation dfs
+     //base case: find the latest valided time
        if(index == A.length){
            int first = A[0]*10 + A[1];
            int second = A[2]*10 + A[3];
+           //update time if it's bigger
            if(first < 24 && second < 60 && time[0] < first*60+second ) {
                time[0] = first*60+second;
            }

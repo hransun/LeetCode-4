@@ -3,9 +3,9 @@ public int largestComponentSize(int[] A) {
          //union find: path compression 找到每一个元素的最终parent
          //最终parent有多少个children，就有多少个connected element
 
-         //Map<element, parent>
+         //Map<element, element对应的parent>
         Map<Integer,Integer> parent = new HashMap<>();
-
+        //建立parent map
         for (int num : A)
             //每一个元素的factor最多有跟号个num
             for (int fact = 2; fact*fact<=num; fact++)
@@ -39,8 +39,10 @@ public int largestComponentSize(int[] A) {
         else p.put(findN,findM);
     }
 //找到i对应的parent
-    public int find(Integer i, Map<Integer,Integer> parent) {
+    public int find(Integer i, Map<Integer,Integer> parent)
+    //在map中不存在，加入
         if (parent.get(i) == null) parent.put(i,i);
+        //找到对应的root
         while (i != parent.get(i)) i = parent.get(i);
         return i;
     }

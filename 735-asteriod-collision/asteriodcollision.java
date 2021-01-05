@@ -16,21 +16,20 @@ class Solution {
                 continue;
             }
             if(i < 0){
-                 while(!stack.isEmpty() && stack.peek() > 0 && Math.abs(stack.peek()) < Math.abs(i)){
+                  //case 1: stack pop unitl empty or meet the negative number
+                 while(!stack.isEmpty() && stack.peekFirst() > 0 && Math.abs(stack.peekFirst()) < Math.abs(i)){
                     stack.pollFirst();
                 }
-                //case 1: stack pop unitl empty or meet the negative number
+                //case 2: meeth the same value number, both destory
+                //这里也承接了上面while loop情况下，stack变成empty，然后把-i放进去
                 if(stack.isEmpty() || stack.peek() < 0){
                     stack.offerFirst(i);
-                //case 2: meeth the same value number, both destory
+              //case 3: meet a bigger number, do nothing
                 } else if(stack.peekFirst() == Math.abs(i)){
                     stack.pollFirst();
                 }
-                //case 3: meet a bigger number, do nothing
+
             }
-        }
-        if(stack.isEmpty()){
-            return new int[]{};
         }
         //the result is the reverse result
         int size = stack.size();

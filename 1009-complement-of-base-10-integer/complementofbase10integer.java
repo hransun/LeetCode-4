@@ -8,6 +8,7 @@ class Solution {
         int bitPosition = N;
         int bit = 1;
         while(bitPosition > 0){
+            //相同取0，不同取1
             N ^= bit;
             //从0postion看起来，每判断一位1往左移一位，看下一位
             bit <<= 1;

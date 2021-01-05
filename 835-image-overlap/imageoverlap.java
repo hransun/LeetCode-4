@@ -3,6 +3,7 @@ class Solution {
     //计算出每一个A中的1到每一个B中1的位置
     //计算方法： (x1 - x2, y1- y2)
     // 位移的重复的次数最多就是重复的数
+    //如果重复，位移次数应该是相等的，即cell是相等的，所有找到cell对应最多的value即可
     public int largestOverlap(int[][] A, int[][] B) {
        Map<Cell, Integer> map = new HashMap<>();
         int res = 0;

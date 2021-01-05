@@ -4,39 +4,28 @@ class Solution {
       //从第一个index开始出发找moutain patter
       //如果有moutan patter, 下一轮从i+ cur-1出发
       //如果没有，index++；
-        int res = 0;
-        int i = 0;
-        while(i < A.length-2){
-            int cur= getLength(A,i);
-            res= Math.max(res, cur);
-            if(cur > 0){
-                i = (i + cur-1);
-            }else{
-                i++;
+      //T: O(n) S: O(1)
+        //i,j sliding window
+        int length = 0;
+        for(int i = 0; i < A.length-1; i++){
+            boolean increase = false;
+            boolean decrease = false;
+            int j = i+1;
+            int target = A[i];
+            while(j < A.length && A[j] > target){
+                increase = true;
+                target = A[j];
+                j++;
+            }
+            while(j<A.length && A[j] < target){
+                decrease = true;
+                target = A[j];
+                j++;
+            }
+            //注意这里的j已经移动到一下个index，所以算距离要先j--
+            if(increase && decrease){
+                length = Math.max(length, (j-1)-i+1);
             }
         }
-        return res;
-    }
-    private int getLength(int[] array, int index){
-        int length = 1;
-        boolean moutain = false;
-        while(index < array.length-1 &&  array[index+1]>array[index]){
-                index++;
-                length++;
-        }
-        if(index < array.length-1 && array[index] == array[index+1]){
-                return 0;
-        }
-        if(index < array.length-1 &&array[index] > array[index+1] && length > 1){
-                moutain = true;
-        }
-        while(index< array.length-1 && array[index] > array[index+1] && moutain == true){
-                index++;
-                length++;
-        }
-        if(moutain == false){
-            return 0;
-        }
-        return length == 1? 0: length;
-    }
+        return length;
 }

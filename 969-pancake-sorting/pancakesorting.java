@@ -6,6 +6,7 @@ class Solution {
         //在从0位置和indexswap
         List<Integer> list  = new ArrayList<>();
         for(int i = A.length; i >0;i--) {
+            //找到cur应该对应的index
             int index = getIndex(A, i);
             //已经在对的index
             if(index+1 == i) {

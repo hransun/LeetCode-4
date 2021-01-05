@@ -46,7 +46,7 @@ public int maxCoins(int[] nums) {
             array[i]= nums[i-1];
         }
     }
-        //从倒数第三个数开始计算
+        //必须从倒数第三个数开始计算
     for(int i = array.length-3; i >= 0; i--){
         for(int j = i+2; j < array.length; j++){
             for(int k = i+1; k < j; k++){

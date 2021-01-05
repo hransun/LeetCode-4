@@ -1,5 +1,5 @@
 class Solution {
-    //无限循环，要么i==0 && 就== 0 ，要么和原来的初始方向不一致
+    //无限循环，要么i==0 && j== 0 ，要么和原来的初始方向不一致(这个结论需要用数学证明证明)
     //这里没有call back，所以不需要用dfs
      public boolean isRobotBounded(String instructions) {
         char[] array = instructions.toCharArray();
