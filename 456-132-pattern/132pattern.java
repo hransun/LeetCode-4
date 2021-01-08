@@ -10,14 +10,16 @@ class Solution {
         for(int i = 1; i < nums.length;i++){
             min[i] = Math.min(min[i-1],nums[i]);
         }
+        //stack: keep the element that is bigger than min[i]
         Deque<Integer> stack = new ArrayDeque<>();
         for(int i = nums.length - 1; i >= 1; i--){
             // 已经满足了 nums[i] < nums[k]  条件，去找右边是否满足nums[k] < nums[j]
             if(nums[i] > min[i]){
-                //先pop出不符合要求的情况，即 nums[j] <= nums[i]
+                //先pop出不符合要求的情况，即 nums[j] <= min[i]
                 while(!stack.isEmpty() && stack.peek() <= min[i]){
                     stack.pollFirst();
                 }
+                //stack.peek（） must > min[i]
                 //符合条件，return true
                 if(!stack.isEmpty() && stack.peek() < nums[i]){
                     return true;

@@ -1,6 +1,5 @@
 class Solution {
     public List<Integer> pancakeSort(int[] A) {
-        //bubble sorting
         //从最大的element开始找对应的index
         //如果位置不对，先和0位个swap
         //在从0位置和indexswap
