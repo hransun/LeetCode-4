@@ -1,5 +1,6 @@
 class Solution {
     public int[] findDiagonalOrder(int[][] matrix) {
+      //T: O(N) S: O(1)
          if(matrix.length == 0 || matrix[0].length == 0){
             return new int[]{};
         }
@@ -40,4 +41,56 @@ class Solution {
         return res;
     }
 
+}
+//additional space
+class Solution {
+    public int[] findDiagonalOrder(int[][] matrix) {
+        // if in the same diagonal, i+j is the same
+        // Map<i+j,deque>
+        if(matrix.length == 0 || matrix[0].length == 0){
+            return new int[]{};
+        }
+        Map<Integer, Deque<Integer>> map = new HashMap<>();
+        for(int i = 0 ; i < matrix.length; i++){
+            for(int j = 0;j<matrix[0].length; j++){
+                if(!map.containsKey(i+j)){
+                    map.put((i+j), new ArrayDeque<>());
+                }
+                map.get(i+j).offerFirst(matrix[i][j]);
+            }
+        }
+        List<Integer> list = new ArrayList<>();
+        for(int i = 0; i < matrix[0].length; i++){
+            int j = 0;
+            Deque<Integer> deque = map.get(i+j);
+            if((i+j)%2 == 1) {
+                while(!deque.isEmpty()){
+                    list.add(deque.pollLast());
+                }
+            }else{
+                 while(!deque.isEmpty()){
+                     list.add(deque.pollFirst());
+                 }
+            }
+        }
+        for(int i = 1; i < matrix.length; i++){
+            int j = matrix[0].length-1;
+            Deque<Integer> deque = map.get(i+j);
+            if((i+j)%2 == 1) {
+                while(!deque.isEmpty()){
+                    list.add(deque.pollLast());
+                }
+            }else{
+                 while(!deque.isEmpty()){
+                     list.add(deque.pollFirst());
+                 }
+            }
+        }
+        int[] res = new int[matrix.length*matrix[0].length];
+        int index = 0;
+        for(int i: list){
+            res[index++] = i;
+        }
+        return res;
+    }
 }

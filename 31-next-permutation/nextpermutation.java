@@ -34,3 +34,50 @@ class Solution {
         while(i < j) swap(A, i++, j--);
     }
 }
+//better time complexity using binary search
+class Solution {
+    public void nextPermutation(int[] nums) {
+      //step 1
+        int target = -1;
+        for(int i = nums.length -2; i >= 0; i--){
+            if(nums[i] < nums[i+1]){
+                target = i;
+                break;
+            }
+        }
+        if(target >= 0){
+            int swapIndex = binarySearch(nums, target+1, nums[target]);
+            int temp = nums[swapIndex];
+            nums[swapIndex] = nums[target];
+            nums[target] = temp;
+        }
+        reverse(nums, target+1, nums.length-1);
+
+    }
+    //step 2
+    private int binarySearch(int[] array, int i, int target){
+        int j = array.length -1;
+        while(i < j-1){
+            int mid = i + (j-i)/2;
+            if(array[mid] > target){
+                i = mid;
+            }else{
+                j = mid-1;
+            }
+        }
+        if(array[j] > target){
+            return j;
+        }
+        return i;
+    }
+    //step 3
+    private void reverse(int[] array, int start, int end){
+        while(start < end){
+            int temp = array[start];
+            array[start] = array[end];
+            array[end] = temp;
+            start++;
+            end--;
+        }
+    }
+}
