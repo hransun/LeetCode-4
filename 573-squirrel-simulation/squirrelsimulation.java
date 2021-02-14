@@ -9,6 +9,8 @@ class Solution {
             res += (distance(pair, tree)*2);
             diff = Math.max(diff, distance(pair,tree) - distance(pair, squirrel));
         }
+        // overall distance- tree distance + squirrel distance
+        // => distance - Maht.max(tree distance - squirrel distance)
         return res-diff;
     }
     private int distance(int[] a, int[] b){
