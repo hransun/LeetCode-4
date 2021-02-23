@@ -20,7 +20,6 @@ class Solution {
     public NodeCopy copyRandomBinaryTree(Node root) {
         Map<Node, NodeCopy> map = new HashMap<>();
         return deepCopy(root,map);
-        //return newRoot;
     }
     private NodeCopy deepCopy(Node root, Map<Node, NodeCopy> map){
         if(root == null){
