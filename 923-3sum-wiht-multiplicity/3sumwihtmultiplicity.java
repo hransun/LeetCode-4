@@ -16,6 +16,8 @@ class Solution {
                     // temp == t
                 }else if(arr[k] == arr[p]){
                     //for the range k - p, it's all equal numbers
+                    //C1 length * C1 （length-1）
+                    //相同的数字，需要去重 /2
                     res += (p-k+1)*(p-k)/2;
                     break;
                 }else{
