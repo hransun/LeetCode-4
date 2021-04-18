@@ -21,12 +21,12 @@ class Solution {
             }else{
                 leftP--;
             }
-            // the situation ()(()) happens
+            // the situation () (()) happens, i point to the second part, here we can do the recursion for two part
             if(leftP == 0){
                 return helper(S, left, i) + helper(S, i+1, right);
             }
         }
-        //go there, mean this substring is balance (())
+        //go there, mean this substring is balance (()), go the next recursion level
         return 2*helper(S, left+1, right-1);
 
     }

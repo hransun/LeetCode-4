@@ -1,6 +1,6 @@
 class Solution {
     public int minimumSemesters(int n, int[][] relations) {
-        //pre[1]: number of pre of num 1 course
+        //pre[1]: number of pre for num 1 course
         int[] pre = new int[n+1];
         for(int[] pair: relations){
             int course = pair[1];
@@ -13,7 +13,7 @@ class Solution {
                 queue.offer(i);
             }
         }
-        //for loop situation
+        //circular situation
         if(queue.size() == 0){
             return -1;
         }
