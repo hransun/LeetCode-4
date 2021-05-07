@@ -14,8 +14,6 @@ class Solution {
         }
         if(!list.contains(cur)){
             list.add(cur);
-        }else{
-            return;
         }
         if(x > 1){
             dfs(x,y,i+1,j, bound, list);
@@ -25,3 +23,25 @@ class Solution {
         }
     }
 }
+//for loop
+//time: O(n*m)
+List<Integer> list = new ArrayList<>();
+        int n = (int)(Math.log(bound)/Math.log(x));
+        int m =  (int)(Math.log(bound)/Math.log(y));
+        for(int i = 0; i <= n; i++){
+            for(int j = 0; j <= m; j++){
+                int cur = (int)(Math.pow(x,i) + Math.pow(y,j));
+                if(cur <= bound && !list.contains(cur)){
+                    list.add(cur);
+                }
+                // if y == 1, only need to for loop once
+                if(y == 1){
+                    break;
+                }
+            }
+            // if x == 1, only need to for loop once
+            if(x == 1){
+                break;
+            }
+        }
+        return list;
